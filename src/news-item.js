@@ -9,7 +9,7 @@
 
   NewsItem.prototype.populatesStory = function(object) {
     this.headline = object.webTitle;
-    this.body = object.blocks.bodyHtml;
+    this.body = object.blocks.body[0].bodyHtml;
     this.image = object.blocks.main.elements[0].assets[1].file;
   };
   exports.NewsItem = NewsItem;
