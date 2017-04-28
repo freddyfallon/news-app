@@ -1,9 +1,9 @@
 (function(exports){
   function NewsController() {
-    this.headlines = [];
     this.url = "https://content.guardianapis.com/politics";
-    this.apiKey = "?api-key=56c1d77d-a2c7-4831-97a1-12dc38bf11fc";
+    this.apiKey = "?api-key=56c1d77d-a2c7-4831-97a1-12dc38bf11fc&show-blocks=all";
     this.apiData;
+    this.stories = [];
   }
 
   NewsController.prototype.apiCall = function() {
@@ -14,8 +14,8 @@
   };
 
   NewsController.prototype.addHeadlines = function() {
-    for (i = 1; i < this.apiData.results.length; i++) {
-      this.headlines.push(this.apiData.results[i]);
+    for (i = 0; i < this.apiData.results.length; i++) {
+      this.stories.push(new NewsItem(this.apiData.results[i]));
     }
   };
 
@@ -28,7 +28,7 @@
     this.apiCall();
     this.addHeadlines();
     var element = document.getElementById('news');
-    element.innerHTML = this.listHeadlines(this.headlines);
+    element.innerHTML = this.listHeadlines(this.stories);
   };
   exports.NewsController = NewsController;
 })(this);

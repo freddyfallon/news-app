@@ -1,7 +1,7 @@
 function HeadlineListTest() {
   var stories = [{
-  webTitle: "Hello"
-}];
+  headline: "Hello"
+  }];
 
   newsController = new NewsController();
 
