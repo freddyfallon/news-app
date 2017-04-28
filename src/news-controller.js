@@ -17,13 +17,13 @@
 
   NewsController.prototype.addHeadlines = function() {
     for (i = 1; i < this.apiData.results.length; i++) {
-      this.headlines.push(this.apiData.results[i].webTitle);
+      this.headlines.push(this.apiData.results[i]);
     };
   };
 
   NewsController.prototype.listHeadlines = function() {
-    var headlineView = new HeadlineView(this.headlines);
-    return headlineView.viewHeadlines();
+    var headlineView = new View(this.headlines);
+    return headlineView.viewStories();
   };
 
   NewsController.prototype.renderHeadlines = function() {
